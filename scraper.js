@@ -1,5 +1,16 @@
 const cheerio = require("cheerio");
 const request = require("request");
+const mongoose = require('mongoose');
+const mongojs = require('mongojs');
+// Database configuration
+let databaseURL = 'weworkremotely';
+let collections = ['jobs'];
+
+// use mongojs to hook into database
+let MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/weworkremotely";
+mongoose.connect(MONGODB_URI);
+let db = mongojs(databaseURL, collections);
+
 
 request("https://weworkremotely.com/jobs", function(error, response, html) {
   // Load the HTML into cheerio and save it to a variable
@@ -34,5 +45,8 @@ request("https://weworkremotely.com/jobs", function(error, response, html) {
   });
 
   // Log the results once you've looped through each of the elements found with cheerio
-  console.log(results);
+  // console.log(results);
+
+  // log scraped information into mongodb
+  db.jobs.insert({results});
 });
