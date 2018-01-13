@@ -1,7 +1,9 @@
+// ==========================PACKAGES=====================
 const cheerio = require("cheerio");
 const request = require("request");
 const mongoose = require('mongoose');
 const mongojs = require('mongojs');
+
 // Database configuration
 let databaseURL = 'weworkremotely';
 let collections = ['jobs'];
@@ -11,6 +13,10 @@ let MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/weworkremotely
 mongoose.connect(MONGODB_URI);
 let db = mongojs(databaseURL, collections);
 
+// log any errors with database
+db.on("error", function(error) {
+  console.log("Database error: ", error);
+});
 
 request("https://weworkremotely.com/jobs", function(error, response, html) {
   // Load the HTML into cheerio and save it to a variable

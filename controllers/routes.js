@@ -12,21 +12,21 @@ db.on("error", function(error) {
     console.log("Database error: ", error);
 });
 
-// ========= ROUTES
+// =================ROUTES=========================
 module.exports = (app) => {
-    // app.use(express.static("public"));
-
+    // test route
     app.get("/hi", function(req, res) {
         res.send({hi: "there"});
     });
 
-    app.get('/all', function(req, res) {
-        console.log("testing");
+    app.get('/', function(req, res) {
         db.jobs.find({}, function(error, found) {
+            var hbsObject = { jobs: found };
             if (error) {
                 console.log("error: ", error);
             } else {
-                res.json(found);
+                res.send(hbsObject);
+                // res.render("index", hbsObject);
             }
         });
     });
