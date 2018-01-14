@@ -9,7 +9,16 @@ let databaseURL = 'weworkremotely';
 let collections = ['jobs'];
 
 // use mongojs to hook into database
-let MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/weworkremotely";
+// let MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/weworkremotely";
+let MONGODB_URI = '';
+if (process.env.NODE_ENV === "production") {
+  // we are in production - return the prod set of keys
+  let MONGODB_URI = process.env.MONGODB_URI;
+} else {
+  // we are in development - return the dev keys
+  let MONGODB_URI = "mongodb://localhost/weworkremotely";
+}
+
 mongoose.connect(MONGODB_URI);
 let db = mongojs(databaseURL, collections);
 
