@@ -7,7 +7,7 @@ Scrapes data from job boards, pushes into MongoDB, and displays back to users on
 * [Cheeriojs](https://github.com/cheeriojs/cheerio) - Scraping Tool
 * [Express](https://expressjs.com/) - Routing, Server
 * [Handlebars](http://handlebarsjs.com/) - HTML Templating
-* (Heroku)(https://www.heroku.com/) - Production Hosting
+* [Heroku](https://www.heroku.com/) - Production Hosting
 
 ### Directory structure
 ```none
