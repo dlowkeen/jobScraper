@@ -46,7 +46,7 @@ request("https://weworkremotely.com/jobs", function(error, response, html) {
     results.push({
       company: company,
       title: title,
-      link: link
+      link: "https://weworkremotely.com/" + link
     });
   });
 

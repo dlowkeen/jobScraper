@@ -21,12 +21,12 @@ module.exports = (app) => {
 
     app.get('/', function(req, res) {
         db.jobs.find({}, function(error, found) {
-            var hbsObject = { jobs: found };
+            var hbsObject = { jobs: found[0].results };
             if (error) {
                 console.log("error: ", error);
             } else {
-                res.send(hbsObject);
-                // res.render("index", hbsObject);
+                // res.send(hbsObject);
+                res.render("index", hbsObject);
             }
         });
     });
