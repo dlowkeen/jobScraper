@@ -1,6 +1,5 @@
 const mongojs = require('mongojs');
 const mongoose = require('mongoose');
-const 
 
 // Database configuration
 let databaseURL = 'weworkremotely';
@@ -23,23 +22,18 @@ module.exports = (app) => {
 
     app.get('/', function(req, res) {
         db.jobs.find({}, function(error, found) {
-            var hbsObject = { jobs: found[0].results };
+            console.log(found);
+            var hbsObject = { jobs: found[found.length - 1].results };
             if (error) {
                 console.log("error: ", error);
             } else {
-                // res.send(hbsObject);
-                console.log("front end hbsObject", hbsObject);
                 res.render("index", hbsObject);
             }
         });
     });
 
-    app.get("/about", function(req, res) {
-        res.render("about");
-    });
-
-    app.get("/search", function(req, res) {
-
-    })
+    // app.get("/about", function(req, res) {
+    //     res.render("about");
+    // });
 
 }
