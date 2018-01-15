@@ -39,8 +39,7 @@
 
             </div>
             <div class="description">
-                <div class="inner">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-                    standard dummy text ever since the 1500s</div>
+                <div class="inner">Find a remote development job that fits your lifestyle</div>
             </div>
         </div>
         <div class="filter"></div>
@@ -53,35 +52,22 @@
 </div>
 
     
-<div class="container">
+<div class="container"><br>
 {{!-- Jobs section --}}
     <div class="card">
         <div class="card-header">
-            New Jobs!
+            {{!-- New Jobs! --}}
         </div>
         <div class="card-body">
-
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Company</th>
-                        <th>Title</th>
-                        <th>Link</th>
-                    </tr>
-                </thead>
-                <tbody id="table-row">
-                     {{#each jobs}}
-                     <tr>
-                        <td>{{company}}</td>
-                        <td>{{title}}</td>
-                        <td><a href="{{link}}">Click To View Description</a></td>
-                    </tr>
-                    {{/each}}
-                </tbody>
-            </table>
-
+            {{#each jobs}}
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <h3>{{company}}</h3>
+                        <p><a href="{{link}}">{{title}}</a></p>
+                    </li>
+                </ul>
+            {{/each}}
         </div>
     </div>
 
-    <div id="results"></div>
 </div>

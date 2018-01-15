@@ -22,7 +22,6 @@ module.exports = (app) => {
 
     app.get('/', function(req, res) {
         db.jobs.find({}, function(error, found) {
-            console.log(found);
             var hbsObject = { jobs: found[found.length - 1].results };
             if (error) {
                 console.log("error: ", error);
