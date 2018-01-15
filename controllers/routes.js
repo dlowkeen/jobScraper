@@ -1,4 +1,6 @@
 const mongojs = require('mongojs');
+const mongoose = require('mongoose');
+const 
 
 // Database configuration
 let databaseURL = 'weworkremotely';
@@ -26,6 +28,7 @@ module.exports = (app) => {
                 console.log("error: ", error);
             } else {
                 // res.send(hbsObject);
+                console.log("front end hbsObject", hbsObject);
                 res.render("index", hbsObject);
             }
         });
@@ -33,6 +36,10 @@ module.exports = (app) => {
 
     app.get("/about", function(req, res) {
         res.render("about");
+    });
+
+    app.get("/search", function(req, res) {
+
     })
 
 }

@@ -61,6 +61,7 @@ request("https://weworkremotely.com/jobs", function(error, response, html) {
 
   // Log the results once you've looped through each of the elements found with cheerio
   // console.log(results);
+  console.log("backend scrape", results);
 
   // log scraped information into mongodb
   db.jobs.insert({results});
